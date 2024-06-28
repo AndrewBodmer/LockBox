@@ -1,0 +1,4 @@
+List:
+ - Transparent Data Encryption (SQL)
+ - Column-Level Encryption
+ - Personally made encryption
