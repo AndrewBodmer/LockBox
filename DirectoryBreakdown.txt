@@ -12,24 +12,24 @@ LockBox/
 │   ├── venv/                           Virtual environment for the Flask app
 │   ├── requirements.txt                Lists the Python dependencies
 │   └── run.py                          Entry point to run the Flask app
-├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   └── favicon.ico
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── App.js
-│   │   │   ├── Dashboard.js
-│   │   │   ├── Login.js
-│   │   │   ├── Register.js
-│   │   │   └── FileUpload.js
-│   │   ├── services/
-│   │   │   ├── authService.js
-│   │   │   └── fileService.js
-│   │   ├── App.css
-│   │   ├── App.js
-│   │   ├── index.css
-│   │   └── index.js
+├── frontend/                           
+│   ├── public/                         Public files for the React app
+│   │   ├── index.html                  Main HTML file
+│   │   └── favicon.ico                 Icon for the app
+│   ├── src/                            Source code for the React app
+│   │   ├── components/                 React components for different parts of the app
+│   │   │   ├── App.js                  Main app component
+│   │   │   ├── Dashboard.js            Dashboard component for file management
+│   │   │   ├── Login.js                Login form component
+│   │   │   ├── Register.js             Registration form component
+│   │   │   └── FileUpload.js           File upload component
+│   │   ├── services/                   Services for handling API calls
+│   │   │   ├── authService.js          Authentication service
+│   │   │   └── fileService.js          File handling service
+│   │   ├── App.css                     Main CSS file for styling
+│   │   ├── App.js                      Main app entry point
+│   │   ├── index.css                   Global CSS styles
+│   │   └── index.js                    Entry point for the React app
 │   ├── package.json
 │   └── yarn.lock
 ├── database/
