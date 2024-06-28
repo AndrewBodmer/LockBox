@@ -1,0 +1,40 @@
+LockBox/
+├── backend/
+│   ├── app/
+│   │   ├── init.py
+│   │   ├── routes.py
+│   │   ├── models.py
+│   │   ├── forms.py
+│   │   ├── utils.py
+│   │   ├── config.py
+│   │   └── extensions.py
+│   ├── migrations/
+│   ├── venv/
+│   ├── requirements.txt
+│   └── run.py
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── App.js
+│   │   │   ├── Dashboard.js
+│   │   │   ├── Login.js
+│   │   │   ├── Register.js
+│   │   │   └── FileUpload.js
+│   │   ├── services/
+│   │   │   ├── authService.js
+│   │   │   └── fileService.js
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── index.css
+│   │   └── index.js
+│   ├── package.json
+│   └── yarn.lock
+├── database/
+│   ├── schema.sql
+│   └── seed.sql
+├── .gitignore
+├── README.md
+└── docker-compose.yml
