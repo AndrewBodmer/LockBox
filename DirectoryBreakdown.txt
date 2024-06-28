@@ -1,17 +1,17 @@
 LockBox/
 ├── backend/
 │   ├── app/
-│   │   ├── init.py
-│   │   ├── routes.py
-│   │   ├── models.py
-│   │   ├── forms.py
-│   │   ├── utils.py
-│   │   ├── config.py
-│   │   └── extensions.py
-│   ├── migrations/
-│   ├── venv/
-│   ├── requirements.txt
-│   └── run.py
+│   │   ├── init.py                     Initializes the Flask app and extensions
+│   │   ├── routes.py                   Defines the routes/endpoints for the app
+│   │   ├── models.py                   Defines the database models
+│   │   ├── forms.py                    Contains form classes for handling user input
+│   │   ├── utils.py                    Utility functions for encryption/decryption and other tasks
+│   │   ├── config.py                   Defines the configuration settings for the Flask app
+│   │   └── extensions.py               Initialization of Flask extensions (e.g., SQLAlchemy)
+│   ├── migrations/                     Stores database migration files
+│   ├── venv/                           Virtual environment for the Flask app
+│   ├── requirements.txt                Lists the Python dependencies
+│   └── run.py                          Entry point to run the Flask app
 ├── frontend/
 │   ├── public/
 │   │   ├── index.html
