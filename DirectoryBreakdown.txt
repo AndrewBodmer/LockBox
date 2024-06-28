@@ -33,8 +33,8 @@ LockBox/
 │   ├── package.json
 │   └── yarn.lock
 ├── database/
-│   ├── schema.sql
-│   └── seed.sql
-├── .gitignore
-├── README.md
-└── docker-compose.yml
+│   ├── schema.sql                      SQL script to set up the database schema
+│   └── seed.sql                        SQL script to seed the database with initial data
+├── .gitignore                          Specifies files and directories to be ignored by Git
+├── README.md                           Project documentation and overview
+└── docker-compose.yml                  Docker Compose file to set up the development environment
