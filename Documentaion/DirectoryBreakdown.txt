@@ -1,0 +1,40 @@
+LockBox/
+├── backend/
+│   ├── app/
+│   │   ├── init.py                     Initializes the Flask app and extensions
+│   │   ├── routes.py                   Defines the routes/endpoints for the app
+│   │   ├── models.py                   Defines the database models
+│   │   ├── forms.py                    Contains form classes for handling user input
+│   │   ├── utils.py                    Utility functions for encryption/decryption and other tasks
+│   │   ├── config.py                   Defines the configuration settings for the Flask app
+│   │   └── extensions.py               Initialization of Flask extensions (e.g., SQLAlchemy)
+│   ├── migrations/                     Stores database migration files
+│   ├── venv/                           Virtual environment for the Flask app
+│   ├── requirements.txt                Lists the Python dependencies
+│   └── run.py                          Entry point to run the Flask app
+├── frontend/                           
+│   ├── public/                         Public files for the React app
+│   │   ├── index.html                  Main HTML file
+│   │   └── favicon.ico                 Icon for the app
+│   ├── src/                            Source code for the React app
+│   │   ├── components/                 React components for different parts of the app
+│   │   │   ├── App.js                  Main app component
+│   │   │   ├── Dashboard.js            Dashboard component for file management
+│   │   │   ├── Login.js                Login form component
+│   │   │   ├── Register.js             Registration form component
+│   │   │   └── FileUpload.js           File upload component
+│   │   ├── services/                   Services for handling API calls
+│   │   │   ├── authService.js          Authentication service
+│   │   │   └── fileService.js          File handling service
+│   │   ├── App.css                     Main CSS file for styling
+│   │   ├── App.js                      Main app entry point
+│   │   ├── index.css                   Global CSS styles
+│   │   └── index.js                    Entry point for the React app
+│   ├── package.json
+│   └── yarn.lock
+├── database/
+│   ├── schema.sql                      SQL script to set up the database schema
+│   └── seed.sql                        SQL script to seed the database with initial data
+├── .gitignore                          Specifies files and directories to be ignored by Git
+├── README.md                           Project documentation and overview
+└── docker-compose.yml                  Docker Compose file to set up the development environment
