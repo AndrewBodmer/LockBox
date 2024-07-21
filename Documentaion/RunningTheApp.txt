@@ -1,12 +1,16 @@
 Running the Application
+----------------------------------------------------------------
 Backend (Flask):
 Activate the Virtual Environment (if not already activated):
-    Scripts\Activate.ps1
-*Note that the terminal does not always have permission to run activation scripts. This can be changed by adjusting these permissions in
-an administrator's terminal.
+    Venv\Scripts\Activate.ps1
+    *Note that the terminal does not always have permission to run activation scripts. This can be changed by adjusting these permissions in
+    an administrator's terminal:
+    As an Administrator, you can set the execution policy by typing this into your PowerShell window:
+        powershell Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    When you are done, you can set the policy back to its default value with:
+        powershell Set-ExecutionPolicy Restricted -Scope CurrentUser
 Navigate to the Backend Directory (where run.py is located):
     cd backend
-
 Run the Flask Application:
     python run.py
 This command will start the Flask development server. You should see output similar to:
@@ -26,7 +30,9 @@ This command will start the Vite development server for the React frontend. You 
 and providing a local URL (usually http://localhost:3000).
     Vite v2.0.0-beta.69 dev server running at:
     > Local: http://localhost:3000/
-
+The application can be exited by simply closing the backend and frontend applications, and the virtual environment can be shut down by entering "deactivate"
+into the terminal.
+----------------------------------------------------------------
 Application Behavior
 Frontend (React):
     When you open http://localhost:3000 in your web browser, you will see your React application running.
