@@ -1,0 +1,54 @@
+Running the Application
+----------------------------------------------------------------
+Backend (Flask):
+Activate the Virtual Environment (if not already activated):
+    Venv\Scripts\Activate.ps1
+    *Note that the terminal does not always have permission to run activation scripts. This can be changed by adjusting these permissions in
+    an administrator's terminal:
+    As an Administrator, you can set the execution policy by typing this into your PowerShell window:
+        powershell Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    When you are done, you can set the policy back to its default value with:
+        powershell Set-ExecutionPolicy Restricted -Scope CurrentUser
+Navigate to the Backend Directory (where run.py is located):
+    cd backend
+Run the Flask Application:
+    python run.py
+This command will start the Flask development server. You should see output similar to:
+    * Serving Flask app "run" (lazy loading)
+    * Environment: development
+    * Debug mode: on
+    * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+    The Flask backend will now be running locally at http://127.0.0.1:5000/.
+
+Frontend (React with Vite):
+New Terminal/Command Prompt Window (while keeping the Flask server running in the original terminal).
+Navigate to the Frontend Directory (where the React application is located):
+    cd LockBox\frontend\lockbox-frontend
+Start the Vite Development Server:
+    npm run dev
+This command will start the Vite development server for the React frontend. You should see output indicating that the server is running
+and providing a local URL (usually http://localhost:3000).
+    Vite v2.0.0-beta.69 dev server running at:
+    > Local: http://localhost:3000/
+The application can be exited by simply closing the backend and frontend applications, and the virtual environment can be shut down by entering "deactivate"
+into the terminal.
+----------------------------------------------------------------
+Application Behavior
+Frontend (React):
+    When you open http://localhost:3000 in your web browser, you will see your React application running.
+    Depending on your frontend development progress, you might see a login/register page, a dashboard interface, or other components that have been implemented.
+    React will handle user interactions, state management, and frontend rendering.
+Backend (Flask):
+    The Flask backend (http://127.0.0.1:5000/) will handle API requests from the frontend.
+    It manages user authentication, file upload/download functionalities, and any other backend operations you have implemented.
+    Flask will interact with the SQL database (e.g., SQLite, PostgreSQL) to store and retrieve user data, file metadata, and application logs.
+
+Interactions Between Frontend and Backend
+API Calls:
+    The React frontend will make HTTP requests (using Axios or Fetch) to endpoints defined in the Flask backend.
+    Example API endpoints might include user authentication (/api/login, /api/register), file management (/api/upload, /api/download), and others as per the 
+    application design.
+
+Authentication and Authorization:
+    Users can register, log in, and perform authenticated actions based on their role and permissions.
+    Flask will validate user credentials, manage sessions (using Flask-Login or similar), and ensure secure access to resources.
