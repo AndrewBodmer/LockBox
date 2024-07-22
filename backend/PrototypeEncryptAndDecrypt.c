@@ -139,6 +139,76 @@ void numDecryption(int *encrypted_text, char *decrypted_text, int length) {
     }
 }
 
+#include <stdio.h>
+#include <string.h>
+
+void numEncryptionWithKey(char *text, int *encrypted_text, int key) {
+
+    int length = strlen(text);
+    int i = 5;
+    int tempStr[length];
+    int factors[5] = {0, 1, 2, 3, 4};
+    key = (key+1)<<2;
+
+    // Convert the key to a int arr
+    int keyLen = numDigits(key);
+    int keyArr[keyLen];
+    
+    // Extract each digit and store in the array
+    for (int i = keyLen - 1; i >= 0; i--) {
+        digitArray[i] = num % 10;
+        num /= 10;
+    }
+
+    // Convert text to integer array
+    for int(i = 0; i < length; i++) {
+        tempStr[j] = int(text[j]);
+        i++;
+    }
+
+    // Encrypt the text using the key
+    for (int j = 0; j < length; j++) {
+        int keyIndex = j%keyLen;
+        tempStr[j] = (tempStr[j] + i) * keyArr[keyIndex];
+    }
+
+    // Perform first transformation
+    for (int j = 0; j < length / 2; j++) {
+        char temp = tempStr[j];
+        tempStr[j] = tempStr[length - 1 - j];
+        tempStr[length - 1 - j] = temp;
+    }
+
+    // Perform second transformation
+    for (int j = 1; j < length; j += 2) {
+        char temp = tempStr[j];
+        tempStr[j] = tempStr[j - 1];
+        tempStr[j - 1] = temp;
+    }
+
+    //Put the result in encrypted_text
+    for (int j = 0; j < length; j++) {
+        encrypted_text[j] = tempStr[j];
+    }
+}
+
+int main() {
+    char text[] = "HelloWorld";
+    int encrypted_text[strlen(text)];
+    int key = 3;
+
+    numEncryptionWithKey(text, encrypted_text, key);
+
+    printf("Encrypted text: ");
+    for (int i = 0; i < strlen(text); i++) {
+        printf("%d ", encrypted_text[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
 // Main function to test the encryption and decryption
 int main() {
     char plain_text[100];  // Adjust size as needed
