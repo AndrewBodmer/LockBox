@@ -61,9 +61,10 @@ void decryptNoKey(char *encrypted_text, char *decrypted_text) {
 
 #include <string.h>
 
+#include <string.h>
+
 void numEncryption(char *text, int *encrypted_text) {
     int length = strlen(text);
-    int i = 5;
     int tempStr[length];
     int factors[5] = {1, 2, 3, 4, 5}; // Avoid zero to prevent multiplication by zero
 
@@ -73,19 +74,20 @@ void numEncryption(char *text, int *encrypted_text) {
     }
 
     // Encrypt the integer array
+    int i = 5;
     for (int j = 0; j < length; j++) {
-        tempStr[j] = (tempStr[j] + i) % 256; // Use modular arithmetic to prevent overflow
+        tempStr[j] = (tempStr[j] + i);
         i++;
     }
 
-    // Perform first transformation
+    // Perform first transformation (reverse the array)
     for (int j = 0; j < length / 2; j++) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[length - 1 - j];
         tempStr[length - 1 - j] = temp;
     }
 
-    // Perform second transformation
+    // Perform second transformation (swap adjacent elements)
     for (int j = 1; j < length; j += 2) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[j - 1];
@@ -95,7 +97,7 @@ void numEncryption(char *text, int *encrypted_text) {
     // Apply factors to the encrypted integer array and store in encrypted_text
     int k = 0;
     for (int j = 0; j < length; j++) {
-        encrypted_text[j] = (tempStr[j] * factors[k]) % 256; // Prevent overflow
+        encrypted_text[j] = (tempStr[j] * factors[k]);
         k = (k + 1) % 5; // Cycle through factors
     }
 }
@@ -108,7 +110,7 @@ void numDecryption(int *encrypted_text, char *decrypted_text, int length) {
     // Reverse the application of factors from encrypted_text
     for (int j = 0; j < length; j++) {
         for (int i = 0; i < 256; i++) { // Try all possible values to reverse the multiplication
-            if ((i * factors[k]) % 256 == encrypted_text[j]) {
+            if ((i * factors[k]) == encrypted_text[j]) {
                 tempStr[j] = i;
                 break;
             }
@@ -116,14 +118,14 @@ void numDecryption(int *encrypted_text, char *decrypted_text, int length) {
         k = (k + 1) % 5; // Cycle through factors
     }
 
-    // Reverse the second transformation
+    // Reverse the second transformation (swap back adjacent elements)
     for (int j = 1; j < length; j += 2) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[j - 1];
         tempStr[j - 1] = temp;
     }
 
-    // Reverse the first transformation
+    // Reverse the first transformation (reverse the array back)
     for (int j = 0; j < length / 2; j++) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[length - 1 - j];
@@ -133,7 +135,7 @@ void numDecryption(int *encrypted_text, char *decrypted_text, int length) {
     // Reverse the encryption of the integer array
     int i = 5 + (length - 1); // Start from the last increment value
     for (int j = length - 1; j >= 0; j--) {
-        tempStr[j] = (tempStr[j] - i + 256) % 256; // Use modular arithmetic to handle negative values
+        tempStr[j] = (tempStr[j] - i); // Use modular arithmetic to handle negative values
         i--;
     }
 
@@ -146,22 +148,21 @@ void numDecryption(int *encrypted_text, char *decrypted_text, int length) {
 
 void numEncryptionWithKey(char *text, int *encrypted_text, int key) {
     int length = strlen(text);
-    int i = 5;
     int tempStr[length];
-    int factors[5] = {1, 2, 3, 4, 5}; // Avoid zero to prevent multiplication by zero
     key = (key + 1) << 2;
 
     // Convert the key to an int array
-    int keyLen = 0;
     int tempKey = key;
+    int keyLen = 0;
     while (tempKey != 0) {
         tempKey /= 10;
         keyLen++;
     }
     int keyArr[keyLen];
+    tempKey = key;
     for (int i = keyLen - 1; i >= 0; i--) {
-        keyArr[i] = key % 10;
-        key /= 10;
+        keyArr[i] = tempKey % 10;
+        tempKey /= 10;
     }
 
     // Convert text to integer array
@@ -170,19 +171,21 @@ void numEncryptionWithKey(char *text, int *encrypted_text, int key) {
     }
 
     // Encrypt the text using the key
+    int i = 5;
     for (int j = 0; j < length; j++) {
         int keyIndex = j % keyLen;
-        tempStr[j] = ((tempStr[j] + i) * keyArr[keyIndex]) % 256; // Prevent overflow
+        tempStr[j] = ((tempStr[j] + i) * keyArr[keyIndex]); // Prevent overflow
+        i++;
     }
 
-    // Perform first transformation
+    // Perform first transformation (reverse the array)
     for (int j = 0; j < length / 2; j++) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[length - 1 - j];
         tempStr[length - 1 - j] = temp;
     }
 
-    // Perform second transformation
+    // Perform second transformation (swap adjacent elements)
     for (int j = 1; j < length; j += 2) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[j - 1];
@@ -195,38 +198,38 @@ void numEncryptionWithKey(char *text, int *encrypted_text, int key) {
     }
 }
 
-void numDecryptionWithKey(int *encrypted_text, char *decrypted_text, int length, int key) {
-    int i = 5;
+void numDecryptionWithKey(int *encrypted_text, char *decrypted_text, int textLength, int key) {
+    int length = textLength;
     int tempStr[length];
-    int factors[5] = {1, 2, 3, 4, 5}; // Same factors as in encryption
     key = (key + 1) << 2;
 
     // Convert the key to an int array
-    int keyLen = 0;
     int tempKey = key;
+    int keyLen = 0;
     while (tempKey != 0) {
         tempKey /= 10;
         keyLen++;
     }
     int keyArr[keyLen];
+    tempKey = key;
     for (int i = keyLen - 1; i >= 0; i--) {
-        keyArr[i] = key % 10;
-        key /= 10;
+        keyArr[i] = tempKey % 10;
+        tempKey /= 10;
     }
 
-    // Copy encrypted text to tempStr
-    for (int j = 0; j < length; j++) {
-        tempStr[j] = encrypted_text[j];
+    // Copy the encrypted text to tempStr
+    for (int i = 0; i < length; i++) {
+        tempStr[i] = encrypted_text[i];
     }
 
-    // Reverse the second transformation
-    for (int j = length - 1; j > 0; j -= 2) {
+    // Perform the second transformation (swap adjacent elements) in reverse
+    for (int j = 1; j < length; j += 2) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[j - 1];
         tempStr[j - 1] = temp;
     }
 
-    // Reverse the first transformation
+    // Perform the first transformation (reverse the array) in reverse
     for (int j = 0; j < length / 2; j++) {
         int temp = tempStr[j];
         tempStr[j] = tempStr[length - 1 - j];
@@ -234,16 +237,20 @@ void numDecryptionWithKey(int *encrypted_text, char *decrypted_text, int length,
     }
 
     // Decrypt the text using the key
+    int i = 5;
     for (int j = 0; j < length; j++) {
         int keyIndex = j % keyLen;
-        tempStr[j] = ((tempStr[j] / keyArr[keyIndex]) % 256 - i + 256) % 256; // Reverse multiplication, modulo and addition
+
+        tempStr[j] /= keyArr[keyIndex];
+        tempStr[j] -= i;
+        i++;
     }
 
-    // Convert integer array to text
-    for (int j = 0; j < length; j++) {
-        decrypted_text[j] = (char)tempStr[j];
+    // Convert the integer array back to text
+    for (int i = 0; i < length; i++) {
+        decrypted_text[i] = (char)tempStr[i];
     }
-    decrypted_text[length] = '\0'; // Null-terminate the decrypted string
+    decrypted_text[length] = '\0'; // Null-terminate the string
 }
 
 // Main function to test the encryption and decryption
@@ -282,14 +289,14 @@ int main() {
 
     printf("\nTest the numeric encryption and decryption with key\n");
     numEncryptionWithKey(plain_text, num_key_encrypted, 12345);
-    printf("Encrypted (numbers): ");
+    printf("Encrypted (numbers and key): ");
     for (int i = 0; i < (int)strlen(plain_text); i++) {
         printf("%d ", num_key_encrypted[i]);
     }
     printf("\n");
 
-    numDecryptionWithKey(num_key_encrypted, num_key_decrypted, 12345, strlen(plain_text));
-    printf("Decrypted (numbers): %s\n", num_key_decrypted);
+    numDecryptionWithKey(num_key_encrypted, num_key_decrypted, strlen(plain_text), 12345);
+    printf("Decrypted (numbers and key): %s\n", num_key_decrypted);
 
     return 0;
 }
