@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
+import Login from './components/Login';
+import Register from './components/Register';
 import './App.css';
 
 function App() {
@@ -7,7 +9,10 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
-        <h1>Hello World!</h1>
+        <div className="auth-container">
+          <Login />
+          <Register />
+        </div>
       </div>
     </div>
   );
