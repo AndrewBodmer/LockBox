@@ -263,7 +263,7 @@ int main() {
     int num_key_encrypted[100];
     char num_key_decrypted[100];
 
-    printf("Enter a plain text: ");
+    /*printf("Enter a plain text: ");
     fgets(plain_text, sizeof(plain_text), stdin);
 
     // Remove the newline character at the end of the input
@@ -296,7 +296,7 @@ int main() {
     printf("\n");
 
     numDecryptionWithKey(num_key_encrypted, num_key_decrypted, strlen(plain_text), 12345);
-    printf("Decrypted (numbers and key): %s\n", num_key_decrypted);
+    printf("Decrypted (numbers and key): %s\n", num_key_decrypted);*/
 
     return 0;
 }
