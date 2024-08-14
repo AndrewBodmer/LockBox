@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Login from './components/Login';
 import Register from './components/Register';
+import Body from './components/Body';
 import './App.css';
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
           <Register />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
